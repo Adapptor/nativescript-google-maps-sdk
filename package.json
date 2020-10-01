@@ -1,0 +1,79 @@
+{
+  "name": "nativescript-google-maps-sdk",
+  "version": "2.9.1",
+  "description": "Google Maps SDK plugin for Nativescript",
+  "main": "map-view",
+  "typings": "map-view.d.ts",
+  "nativescript": {
+    "platforms": {
+      "android": "4.0.0",
+      "ios": "4.0.0"
+    }
+  },
+  "scripts": {
+    "cm": "git-cz",
+    "commitmsg": "validate-commit-msg",
+    "github-release": "conventional-github-releaser -p angular -n ./.github-release.json",
+    "clean": "rm -f *.js",
+    "build": "npm run clean && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "./node_modules/.bin/tsc",
+    "plugin.link": "npm link && cd ../demo && npm link nativescript-google-maps-sdk && cd ../src",
+    "prepare": "node ./scripts/prepare.js",
+    "demo.ios": "npm i && npm run build && cd ../demo && tns run ios",
+    "demo.android": "npm i && npm run build && cd ../demo && tns run android",
+    "demo-vue.ios": "npm i && npm run build && cd ../demo-vue && tns run ios --bundle --syncAllFiles",
+    "demo-vue.android": "npm i && npm run build && cd ../demo-vue && tns run android --bundle --syncAllFiles",
+    "generate.typings.ios": "cd ../demo && TNS_DEBUG_METADATA_PATH=\"$(pwd)/metadata\" tns build ios && TNS_TYPESCRIPT_DECLARATIONS_PATH=\"$(pwd)/typings\" tns build ios && echo 'Now look for your library typings in demo/typings!'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dapriett/nativescript-google-maps-sdk.git"
+  },
+  "keywords": [
+    "Nativescript",
+    "Google",
+    "Maps",
+    "API",
+    "SDK"
+  ],
+  "author": "Dan Prietti <dprietti@gmail.com> (https://github.com/dapriett)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dapriett/nativescript-google-maps-sdk/issues"
+  },
+  "homepage": "https://github.com/dapriett/nativescript-google-maps-sdk#readme",
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "conventional-github-releaser": "^3.1.3",
+    "cz-conventional-changelog": "^2.0.0",
+    "husky": "^0.14.2",
+    "semver": "^5.5.0",
+    "tns-core-modules": "^4.0.0",
+    "tns-platform-declarations": "^4.0.0",
+    "typescript": "^2.3.2",
+    "validate-commit-msg": "^2.12.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "helpMessage": "\nPlease fix your commit message to match format.  For help, execute 'npm run cm'\n",
+      "types": [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "perf",
+        "test",
+        "chore",
+        "revert",
+        "custom"
+      ],
+      "warnOnFail": false,
+      "autoFix": false
+    }
+  }
+}
