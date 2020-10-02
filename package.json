@@ -1,6 +1,6 @@
 {
   "name": "nativescript-google-maps-sdk",
-  "version": "2.9.1",
+  "version": "2.9.1-ns7",
   "description": "Google Maps SDK plugin for Nativescript",
   "main": "map-view",
   "typings": "map-view.d.ts",
@@ -19,7 +19,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "./node_modules/.bin/tsc",
     "plugin.link": "npm link && cd ../demo && npm link nativescript-google-maps-sdk && cd ../src",
-    "prepare": "node ./scripts/prepare.js",
     "demo.ios": "npm i && npm run build && cd ../demo && tns run ios",
     "demo.android": "npm i && npm run build && cd ../demo && tns run android",
     "demo-vue.ios": "npm i && npm run build && cd ../demo-vue && tns run ios --bundle --syncAllFiles",
