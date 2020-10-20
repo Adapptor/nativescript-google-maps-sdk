@@ -1,5 +1,6 @@
 import { MapViewBase, BoundsBase, CircleBase, MarkerBase, PolygonBase, PolylineBase, ProjectionBase, PositionBase, latitudeProperty, VisibleRegionBase, longitudeProperty, bearingProperty, zoomProperty, tiltProperty, UISettingsBase, getColorHue } from "./map-view-common";
 import { Image } from "tns-core-modules/ui/image";
+import { Application, AndroidApplication } from "@nativescript/core";
 export * from "./map-view-common";
 export class MapView extends MapViewBase {
     constructor() {
@@ -8,17 +9,17 @@ export class MapView extends MapViewBase {
     }
     onLoaded() {
         super.onLoaded();
-        application.android.on(application.AndroidApplication.activityPausedEvent, this.onActivityPaused, this);
-        application.android.on(application.AndroidApplication.activityResumedEvent, this.onActivityResumed, this);
-        application.android.on(application.AndroidApplication.saveActivityStateEvent, this.onActivitySaveInstanceState, this);
-        application.android.on(application.AndroidApplication.activityDestroyedEvent, this.onActivityDestroyed, this);
+        Application.android.on(AndroidApplication.activityPausedEvent, this.onActivityPaused, this);
+        Application.android.on(AndroidApplication.activityResumedEvent, this.onActivityResumed, this);
+        Application.android.on(AndroidApplication.saveActivityStateEvent, this.onActivitySaveInstanceState, this);
+        Application.android.on(AndroidApplication.activityDestroyedEvent, this.onActivityDestroyed, this);
     }
     onUnloaded() {
         super.onUnloaded();
-        application.android.off(application.AndroidApplication.activityPausedEvent, this.onActivityPaused, this);
-        application.android.off(application.AndroidApplication.activityResumedEvent, this.onActivityResumed, this);
-        application.android.off(application.AndroidApplication.saveActivityStateEvent, this.onActivitySaveInstanceState, this);
-        application.android.off(application.AndroidApplication.activityDestroyedEvent, this.onActivityDestroyed, this);
+        Application.android.off(AndroidApplication.activityPausedEvent, this.onActivityPaused, this);
+        Application.android.off(AndroidApplication.activityResumedEvent, this.onActivityResumed, this);
+        Application.android.off(AndroidApplication.saveActivityStateEvent, this.onActivitySaveInstanceState, this);
+        Application.android.off(AndroidApplication.activityDestroyedEvent, this.onActivityDestroyed, this);
     }
     disposeNativeView() {
         if (this.nativeView) {
